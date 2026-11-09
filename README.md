@@ -21,7 +21,7 @@ npm run preview
 
 ## Try it
 
-Add Math for Rs 12,000 and Computer Science for Rs 15,000. Enter Rs 2,000 registration, a 10% scholarship, and a Rs 25,000 budget. The summary should show Rs 26,300 due and Rs 1,300 over budget.
+Choose Mathematics and Computer Science from the sample course catalog to add their editable fees of Rs 12,000 and Rs 15,000. Use Add course to enter a custom subject. Enter Rs 2,000 registration, a 10% scholarship, and a Rs 25,000 budget. The summary should show Rs 26,300 due and Rs 1,300 over budget.
 
 ## Product documents
 
@@ -35,7 +35,7 @@ The estimate uses PKR and assumes one registration fee and one scholarship for t
 
 - All five Node tests passed.
 - Production smoke checks passed in Microsoft Edge at a 390 px viewport. Checks covered keyboard activation, budget comparisons, fee validation and recovery, rounding, maximum tuition and the course limit, and draft restore, clear, and storage failure.
-- Vite reported 226.79 kB of production JavaScript (71.32 kB gzip) and 3.56 kB of CSS (1.43 kB gzip). Production filenames include content hashes. Runtime dependencies are React and React DOM.
+- Vite reported 227.56 kB of production JavaScript (71.57 kB gzip) and 3.76 kB of CSS (1.46 kB gzip). Production filenames include content hashes. Runtime dependencies are React and React DOM.
 - The npm install audit reported zero known vulnerabilities. Course names render as text, and restored drafts are checked before use.
 
 ## Publish to Vercel
@@ -54,5 +54,6 @@ Choose the Vite framework preset if prompted. Use the project root, npm run buil
 OpenAI Codex wrote the code using gpt-6.1-sol, as recorded in the native session metadata. List any manual code edits before submitting. No manual edits by the applicant were reported during implementation.
 
 After the final AI response, copy the original Codex session log into transcripts/ as session-01.jsonl. Check it for passwords, API keys, and tokens before sharing. Preserve everything else as exported. Include the original exports of any additional sessions used for the assignment. Share the source, product documents, and transcripts together. Exclude node_modules, dist, local Vercel metadata, and secrets.
+
 
 

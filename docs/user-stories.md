@@ -13,6 +13,7 @@
 
 As a student, I want to see the itemized amount due so I can plan my payment.
 
+- Given an empty planner, when I choose Computer Science from the sample catalog, then its name and Rs 15,000 fee are filled in. When I edit the fee to Rs 14,000, then the estimate updates to Rs 14,000.
 - Given Math costs Rs 12,000 and Computer Science costs Rs 15,000, when I enter a 10% scholarship and Rs 2,000 registration, then I see Rs 27,000 tuition, Rs 2,700 scholarship, Rs 2,000 registration, and Rs 26,300 due.
 - Given Rs 27,000 tuition and Rs 2,000 registration, when I apply a 100% scholarship, then Rs 2,000 remains due.
 - Given a course costs Rs 0.01, when I apply a 50% scholarship, then the displayed deduction is Rs 0.01 and the amount due is Rs 0.00.
@@ -41,4 +42,5 @@ As a student, I want to resume my term plan on the same browser so I can keep co
 - Given a saved draft, when I reload in the same browser, then the courses and optional inputs are restored and the estimate is recalculated.
 - Given a saved draft, when I clear it and reload, then I see an empty planner.
 - Given storage is unavailable or the saved data is malformed or has an unsupported version, when I open the app, then I can start a fresh plan and calculate fees without a crash.
+
 

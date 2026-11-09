@@ -26,6 +26,14 @@ const Course = memo(function Course({ row, index, nameError, feeError, update, r
   </li>;
 });
 
+const catalog = [
+  { name: 'Mathematics', fee: '12000' },
+  { name: 'Computer Science', fee: '15000' },
+  { name: 'English Composition', fee: '10000' },
+  { name: 'Business Fundamentals', fee: '13500' },
+  { name: 'Graphic Design', fee: '14500' },
+];
+
 const options = [
   ['registration', 'Registration (PKR)', '0.00'],
   ['scholarship', 'Scholarship (%)', '0'],
@@ -52,8 +60,8 @@ function App() {
     }
   }, [plan]);
 
-  function addCourse() {
-    const row = { id: crypto.randomUUID(), name: '', fee: '' };
+  function addCourse(course = { name: '', fee: '' }) {
+    const row = { id: crypto.randomUUID(), ...course };
     setPlan(current => current.courses.length < MAX_COURSES ? { ...current, courses: [...current.courses, row] } : current);
   }
 
@@ -68,7 +76,20 @@ function App() {
           {plan.courses.length ? <ol className="courses">{plan.courses.map((row, index) => <Course key={row.id} row={row} index={index}
             nameError={result.courseErrors[index].name} feeError={result.courseErrors[index].fee} update={update} remove={remove} />)}</ol>
             : <div className="empty">No courses yet. Add your first course to start an estimate.</div>}
-          <button className="add" disabled={plan.courses.length >= MAX_COURSES} onClick={addCourse}>＋ Add course</button>
+          <div className="catalog">
+            <label htmlFor="catalog">Add from sample courses</label>
+            <select id="catalog" value="" disabled={plan.courses.length >= MAX_COURSES}
+              aria-describedby="catalog-hint" onChange={event => {
+                if (event.target.value !== '') addCourse(catalog[Number(event.target.value)]);
+              }}>
+              <option value="">Choose a course</option>
+              {catalog.map((course, index) => <option key={course.name} value={index}>
+                {course.name} · {format(Number(course.fee) * 100)}
+              </option>)}
+            </select>
+            <p id="catalog-hint" className="muted">Sample fees are editable.</p>
+          </div>
+          <button className="add" disabled={plan.courses.length >= MAX_COURSES} onClick={() => addCourse()}>＋ Add course</button>
           {plan.courses.length === MAX_COURSES && <p className="muted">This plan has reached the 20-course limit.</p>}
           <div className="extras"><h3>Fees and funding</h3><p className="muted">All three fields are optional. Scholarships apply to tuition.</p>
             <div className="option-grid">{options.map(([key, label, placeholder]) => <Field key={key} id={key} label={label} value={plan[key]}
@@ -93,4 +114,5 @@ function App() {
 }
 
 createRoot(document.getElementById('root')).render(<App />);
+
 
